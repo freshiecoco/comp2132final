@@ -50,5 +50,3 @@ again.onclick = function() {
     roundNumber = 1;
     play.click();
 }
-
-
