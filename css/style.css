@@ -1,1 +1,33 @@
-/*# sourceMappingURL=style.css.map */
+html {
+  box-sizing: border-box;
+  background-color: rgb(63, 63, 63);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  max-width: 900px;
+  min-height: 100vh;
+  margin: auto;
+  background: rgb(49, 49, 49);
+  color: whitesmoke;
+}
+body #gameContainer {
+  width: 600px;
+  height: 450px;
+  margin: 20px auto;
+  border: 1px white solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+}
+body #gameContainer > * {
+  flex: 1;
+  border: 2px white dotted;
+}
+body #gameContainer .diceImage {
+  width: 100px;
+  height: 100px;
+}/*# sourceMappingURL=style.css.map */

@@ -10,13 +10,40 @@
         <link rel="stylesheet" href="../css/style.css">
 
         <script src="../js/dice.js" defer></script>
+        <script src="../js/game.js" defer></script>
     </head>
 
     <body>
         <header></header>
 
         <main>
-            <a href="test.html">Test in progress</a>
+            <h1>Play Dice!</h1>
+            <div id="roundDisplay"></div>
+            <div id="gameContainer">
+                <div id="playerContainer">
+                    <div id="playerDice">
+                        <div id="playerDice1"></div>
+                        <div id="playerDice2"></div>
+                    </div>
+                    <div id="playerScore">
+                        <div id="playerScoreRound"></div>
+                        <div id="playerScoreTotal"></div>
+                    </div>
+                </div>
+
+                <div id="cpuContainer">
+                    <div id="cpuDice">
+                        <div id="cpuDice1"></div>
+                        <div id="cpuDice2"></div>
+                    </div>
+                    <div id="cpuScore">
+                        <div id="cpuScoreRound"></div>
+                        <div id="cpuScoreTotal"></div>
+                    </div>
+                </div>
+
+            </div>
+            <button id="roll">Roll</button>
         </main>
 
         <footer></footer>
