@@ -14,14 +14,25 @@ body {
   background: rgb(49, 49, 49);
   color: whitesmoke;
 }
+body img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 body .gameContainer {
   width: 600px;
   height: 450px;
-  margin: 20px auto;
+  margin: auto;
   border: 1px white solid;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+body .gameContainer h2, body .gameContainer p {
+  margin-left: 10px;
 }
 body .gameContainer .subGameContainer {
   height: 350px;
@@ -50,4 +61,69 @@ body .gameContainer .subGameContainer .playerContainer .memoryContainer > div {
 body .gameContainer .subGameContainer .playerContainer .memoryContainer > div .diceImgS {
   width: 33px;
   height: 33px;
+}
+body .gameContainer .popUp {
+  position: absolute;
+  left: 150px;
+  top: 25%;
+  padding: 15px;
+  height: 200px;
+  width: 300px;
+  background-color: black;
+  border: 3px solid whitesmoke;
+  border-radius: 10px;
+}
+body .gameContainer .popUp .closeButton {
+  position: absolute;
+  font-size: 18px;
+  padding: 2px 7px 2px 7px;
+  right: 3px;
+  top: 2px;
+  color: whitesmoke;
+  background-color: rgb(228, 17, 17);
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+}
+body .gameContainer .popUp .closeButton:hover {
+  background-color: rgb(255, 97, 97);
+  border-color: white;
+  cursor: pointer;
+}
+body .gameContainer .popUp .closeButton:active {
+  background-color: rgb(228, 17, 17);
+  border-color: black;
+  color: rgb(49, 49, 49);
+}
+body .gameContainer .confirmationButtons {
+  display: flex;
+}
+body .gameContainer .confirmationButtons > button {
+  flex: 1;
+  margin-left: 25px;
+  margin-right: 25px;
+  font-size: 16px;
+  font-weight: bold;
+}
+body .gameContainer .hidden {
+  visibility: hidden;
+}
+body .playButtons {
+  margin: auto;
+  width: 300px;
+  display: flex;
+}
+body .playButtons > button {
+  flex: 1;
+  margin: 0px 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+body .mask {
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 }/*# sourceMappingURL=style.css.map */

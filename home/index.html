@@ -9,6 +9,7 @@
         
         <link rel="stylesheet" href="../css/style.css">
 
+        <script src="https://kit.fontawesome.com/6e7b26ffc8.js" crossorigin="anonymous"></script>
         <script src="../js/dice.js" defer></script>
         <script src="../js/game.js" defer></script>
         <script src="../js/main.js" defer></script>
@@ -18,40 +19,66 @@
         <header></header>
 
         <main>
-            <h1>Play Dice!</h1>
             <div id="diceGame" class="gameContainer">
-                <div id="roundDisplay">Round 1</div>
+                <div id="roundDisplay">Round:</div>
+
                 <div class="subGameContainer">
-                <div id="player" class="playerContainer">
-                    <h2>You</h2>
-                    <div id="playerDice" class="diceContainer">
-                        <div id="playerDice1"></div>
-                        <div id="playerDice2"></div>
+                    <div id="player" class="playerContainer">
+                        <h2>You</h2>
+
+                        <div id="playerDice" class="diceContainer">
+                            <div id="playerDice1"></div>
+                            <div id="playerDice2"></div>
+                        </div>
+
+                        <div id="playerScore" class="scoreContainer">
+                            <div id="playerScoreRound"></div>
+                            <div id="playerScoreTotal"></div>
+                        </div>
+
+                        <div id="playerMemory" class="memoryContainer"></div>
                     </div>
-                    <div id="playerScore" class="scoreContainer">
-                        <div id="playerScoreRound"></div>
-                        <div id="playerScoreTotal"></div>
+
+                    <div id="cpu" class="playerContainer">
+                        <h2>CPU</h2>
+
+                        <div id="cpuDice" class="diceContainer">
+                            <div id="cpuDice1"></div>
+                            <div id="cpuDice2"></div>
+                        </div>
+
+                        <div id="cpuScore" class="scoreContainer">
+                            <div id="cpuScoreRound"></div>
+                            <div id="cpuScoreTotal"></div>
+                        </div>
+
+                        <div id="cpuMemory" class="memoryContainer"></div>
                     </div>
-                    <div id="playerMemory" class="memoryContainer"></div>
                 </div>
 
-                <div id="cpu" class="playerContainer">
-                    <h2>CPU</h2>
-                    <div id="cpuDice" class="diceContainer">
-                        <div id="cpuDice1"></div>
-                        <div id="cpuDice2"></div>
-                    </div>
-                    <div id="cpuScore" class="scoreContainer">
-                        <div id="cpuScoreRound"></div>
-                        <div id="cpuScoreTotal"></div>
-                    </div>
-                    <div id="cpuMemory" class="memoryContainer"></div>
+                <div id="gameOverMask" class="mask hidden"></div>
+                <div id="gameOver" class="popUp hidden">
+                    <div id="gameOverText"></div>
+                    <button class="closeButton" onclick="closeGameOverPopUp()"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                </div>
+                
+                <div id="restartMask" class="mask hidden"></div>
+                <div id="restartPopUp" class="popUp hidden">
+                    <h2>Are you sure you want to start a new game?</h2>
 
+                    <div class="confirmationButtons">
+                        <button id="restartYes">Yes</button>
+                        <button onclick="closeRestartPopUp()">No</button>
+                    </div>
+                    
+                    <button class="closeButton" onclick="closeRestartPopUp()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
             </div>
-            <button id="roll">Roll</button>
-            <div id="gameOverPopUp"></div>
+
+            <div class="playButtons">
+                <button id="roll">Roll</button>
+                <button id="restart" disabled>Restart</button>
+            </div>
         </main>
 
         <footer></footer>

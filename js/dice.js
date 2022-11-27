@@ -67,6 +67,16 @@ class DicePlayer
         this.memoryId.innerHTML += `<div>${img(d[this.d1])}${img(d[this.d2])}<div>`;
     }
 
+    discardPackage()
+    {
+        this.dice1Id.innerHTML  = ``;
+        this.dice2Id.innerHTML  = ``;
+        this.scoreRId.innerHTML = ``;
+        this.scoreTId.innerHTML = ``;
+        this.memoryId.innerHTML = ``;
+        this.total = 0;
+    }
+
     static randomFace()
     {
         return d[Math.floor(Math.random() * 6)];

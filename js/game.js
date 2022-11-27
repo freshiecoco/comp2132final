@@ -1,32 +1,30 @@
 class DiceGame
 {
-    constructor()
+    constructor(playerId, cpuId, roundId, rollButtonId, gameOverId, restartButtonId)
     {   
         this.roundNum  = 0;
-        this.popUpText = ``;
-        this.player = new DicePlayer(`player`);
-        this.cpu    = new DicePlayer(`cpu`);
-        this.roundId = document.getElementById(`roundDisplay`);
-        this.rollId  = document.getElementById(`roll`);
-        this.popUpId = document.getElementById(`gameOverPopUp`);
-        this.playHandler  = this.play.bind(this);
-        this.resetHandler = this.reset.bind(this);
-    }
+        this.player = new DicePlayer(playerId);
+        this.cpu    = new DicePlayer(cpuId);
+        
+        this.roundDisplay  = document.getElementById(roundId);
+        this.rollButton    = document.getElementById(rollButtonId);
+        this.gameOverPopUp = document.getElementById(gameOverId);
+        this.gameOverText  = document.getElementById(gameOverId + `Text`);
+        this.gameOverMask  = document.getElementById(gameOverId + `Mask`);
+        this.restartButton = document.getElementById(restartButtonId);
+        this.restartPopUp  = document.getElementById(restartButtonId + `PopUp`);
+        this.restartMask   = document.getElementById(restartButtonId + `Mask`);
+        this.restartYes    = document.getElementById(restartButtonId + `Yes`);
 
-    init()
-    {
-        this.rollId.addEventListener(`click`, this.playHandler);
-    }
-
-    displayRound()
-    {
-        this.roundId.innerHTML = `Round: ` + (this.roundNum++);
-        console.log(this.roundNum);
+        this.rollButton.onclick    = this.play.bind(this);
+        this.restartButton.onclick = this.restart.bind(this);
+        this.restartYes.onclick    = this.reset.bind(this);
     }
 
     play()
     {
-        this.displayRound();
+        this.restartButton.disabled = false;
+        this.roundDisplay.innerHTML = `Round: ` + (++this.roundNum);
         this.player.generatePackage();
         this.cpu.generatePackage();
 
@@ -38,18 +36,28 @@ class DiceGame
 
     gameOver()
     {
-        this.rollId.disabled = true;
-        this.popUpText = this.player.makeGameOverText(this.cpu);
-        this.popUpId.innerHTML = `<h2>${this.popUpText}</h2><h2>Final score: ${this.player.total} : ${this.cpu.total}</h2>`;
+        this.rollButton.disabled = true;
+        this.gameOverText.innerHTML = `<h2>${this.player.makeGameOverText(this.cpu)}</h2>`;
+        this.gameOverText.innerHTML += `<h2>Final score: ${this.player.total} : ${this.cpu.total}</h2>`
+        this.gameOverPopUp.classList.remove(`hidden`);
+        this.gameOverMask.classList.remove(`hidden`);
     }
 
     reset()
     {
         this.roundNum = 0;
-        this.player.total = 0;
-        this.cpu.total = 0;
+        this.roundDisplay.innerHTML = `Round: `;
+        this.player.discardPackage();
+        this.cpu.discardPackage();
+        this.restartButton.disabled = true;
+        this.rollButton.disabled = false;
+        this.restartPopUp.classList.add(`hidden`);
+        this.restartMask.classList.add(`hidden`);
+    }
+
+    restart()
+    {
+        this.restartPopUp.classList.remove(`hidden`);
+        this.restartMask.classList.remove(`hidden`);
     }
 }
-
-const game = new DiceGame();
-game.init();
