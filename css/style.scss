@@ -14,25 +14,49 @@ body {
     background: rgb(49, 49, 49);
     color: whitesmoke;
 
-    #gameContainer {
+    .gameContainer {
         width: 600px;
         height: 450px;
         margin: 20px auto;
         border: 1px white solid;
         border-radius: 5px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
 
-        > * {
-            flex: 1;
-            border: 2px white dotted;
-        }
+        .subGameContainer {
+            height: 350px;
+            display: flex;
+            flex-direction: row;
 
-        .diceImage {
-            width: 100px;
-            height: 100px;
+            .playerContainer {
+                flex: 1;
+                border: 1px white dotted;
+
+                .diceContainer {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+        
+                    .diceImgL {
+                        flex: 1;
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+    
+                .memoryContainer {
+                    > div {                        
+                        margin: 3px 5px;
+                        display: inline-block;                        
+    
+                        .diceImgS {                            
+                            width: 33px;
+                            height: 33px;                            
+                        }
+                    }                    
+                }
+            }    
         }
     }
-
-
 }

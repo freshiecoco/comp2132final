@@ -14,20 +14,40 @@ body {
   background: rgb(49, 49, 49);
   color: whitesmoke;
 }
-body #gameContainer {
+body .gameContainer {
   width: 600px;
   height: 450px;
   margin: 20px auto;
   border: 1px white solid;
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
+}
+body .gameContainer .subGameContainer {
+  height: 350px;
+  display: flex;
   flex-direction: row;
 }
-body #gameContainer > * {
+body .gameContainer .subGameContainer .playerContainer {
   flex: 1;
-  border: 2px white dotted;
+  border: 1px white dotted;
 }
-body #gameContainer .diceImage {
+body .gameContainer .subGameContainer .playerContainer .diceContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+body .gameContainer .subGameContainer .playerContainer .diceContainer .diceImgL {
+  flex: 1;
   width: 100px;
   height: 100px;
+}
+body .gameContainer .subGameContainer .playerContainer .memoryContainer > div {
+  margin: 3px 5px;
+  display: inline-block;
+}
+body .gameContainer .subGameContainer .playerContainer .memoryContainer > div .diceImgS {
+  width: 33px;
+  height: 33px;
 }/*# sourceMappingURL=style.css.map */

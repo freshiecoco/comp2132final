@@ -1,49 +1,55 @@
-let roundNumber = 0;
-const imgR = `../images/`;
-const player = new DicePlayer(`player`);
-const cpu = new DicePlayer(`cpu`);
-
-const rollButton = document.getElementById(`roll`);
-
-rollButton.addEventListener(`click`, playDice);
-
-function playDice()
+class DiceGame
 {
-    document.getElementById(`roundDisplay`).innerHTML = `Round ` + (roundNumber + 1);
-    player.roll();
-    cpu.roll();
-    const pd1 = player.rolls[roundNumber][0];
-    const pd2 = player.rolls[roundNumber][1];
-    const cd1 = cpu.rolls[roundNumber][0];
-    const cd2 = cpu.rolls[roundNumber][1];
+    constructor()
+    {   
+        this.roundNum  = 0;
+        this.popUpText = ``;
+        this.player = new DicePlayer(`player`);
+        this.cpu    = new DicePlayer(`cpu`);
+        this.roundId = document.getElementById(`roundDisplay`);
+        this.rollId  = document.getElementById(`roll`);
+        this.popUpId = document.getElementById(`gameOverPopUp`);
+        this.playHandler  = this.play.bind(this);
+        this.resetHandler = this.reset.bind(this);
+    }
 
-    player.dice1.innerHTML = `<img src="${imgR + pd1 + `.png`}" alt="${pd1}" class="diceImage">`;
-    player.dice2.innerHTML = `<img src="${imgR + pd2 + `.png`}" alt="${pd2}" class="diceImage">`;
-    player.scoreRound.innerHTML = `<p>You scored ${player.scores[roundNumber]}</p>`;
-    player.scoreTotal.innerHTML = `<p>Your total score: ${player.total}`;
-
-    cpu.dice1.innerHTML = `<img src="${imgR + cd1 + `.png`}" alt="${cd1}" class="diceImage">`;
-    cpu.dice2.innerHTML = `<img src="${imgR + cd2 + `.png`}" alt="${cd2}" class="diceImage">`;
-    cpu.scoreRound.innerHTML = `<p>Opponent scored ${cpu.scores[roundNumber]}</p>`;
-    cpu.scoreTotal.innerHTML = `<p>Opponent's total score: ${cpu.total}`;
-    roundNumber++;
-    if (roundNumber > 2)
+    init()
     {
-        rollButton.disabled = true;
-        let gameOverText = ``;
-        if (player.total > cpu.total)
-        {
-            gameOverText = `You win!`;
-        }
-        else if (player.total < cpu.total)
-        {
-            gameOverText = `You lose!`;
-        }
-        else
-        {
-            gameOverText = `Draw!`;
-        }
+        this.rollId.addEventListener(`click`, this.playHandler);
+    }
 
-        document.getElementById(`gameContainer`).innerHTML += `<h2>${gameOverText} Final score: ${player.total} : ${cpu.total}</h2>`
+    displayRound()
+    {
+        this.roundId.innerHTML = `Round: ` + (this.roundNum++);
+        console.log(this.roundNum);
+    }
+
+    play()
+    {
+        this.displayRound();
+        this.player.generatePackage();
+        this.cpu.generatePackage();
+
+        if (this.roundNum > 2)
+        {
+            this.gameOver();
+        }
+    }
+
+    gameOver()
+    {
+        this.rollId.disabled = true;
+        this.popUpText = this.player.makeGameOverText(this.cpu);
+        this.popUpId.innerHTML = `<h2>${this.popUpText}</h2><h2>Final score: ${this.player.total} : ${this.cpu.total}</h2>`;
+    }
+
+    reset()
+    {
+        this.roundNum = 0;
+        this.player.total = 0;
+        this.cpu.total = 0;
     }
 }
+
+const game = new DiceGame();
+game.init();

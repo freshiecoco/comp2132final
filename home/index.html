@@ -11,6 +11,7 @@
 
         <script src="../js/dice.js" defer></script>
         <script src="../js/game.js" defer></script>
+        <script src="../js/main.js" defer></script>
     </head>
 
     <body>
@@ -18,32 +19,39 @@
 
         <main>
             <h1>Play Dice!</h1>
-            <div id="roundDisplay"></div>
-            <div id="gameContainer">
-                <div id="playerContainer">
-                    <div id="playerDice">
+            <div id="diceGame" class="gameContainer">
+                <div id="roundDisplay">Round 1</div>
+                <div class="subGameContainer">
+                <div id="player" class="playerContainer">
+                    <h2>You</h2>
+                    <div id="playerDice" class="diceContainer">
                         <div id="playerDice1"></div>
                         <div id="playerDice2"></div>
                     </div>
-                    <div id="playerScore">
+                    <div id="playerScore" class="scoreContainer">
                         <div id="playerScoreRound"></div>
                         <div id="playerScoreTotal"></div>
                     </div>
+                    <div id="playerMemory" class="memoryContainer"></div>
                 </div>
 
-                <div id="cpuContainer">
-                    <div id="cpuDice">
+                <div id="cpu" class="playerContainer">
+                    <h2>CPU</h2>
+                    <div id="cpuDice" class="diceContainer">
                         <div id="cpuDice1"></div>
                         <div id="cpuDice2"></div>
                     </div>
-                    <div id="cpuScore">
+                    <div id="cpuScore" class="scoreContainer">
                         <div id="cpuScoreRound"></div>
                         <div id="cpuScoreTotal"></div>
                     </div>
+                    <div id="cpuMemory" class="memoryContainer"></div>
+                </div>
                 </div>
 
             </div>
             <button id="roll">Roll</button>
+            <div id="gameOverPopUp"></div>
         </main>
 
         <footer></footer>
