@@ -5,7 +5,6 @@ class DiceGame
         this.roundNum  = 0;
         this.player = new DicePlayer(playerId);
         this.cpu    = new DicePlayer(cpuId);
-        
         this.roundDisplay  = document.getElementById(roundId);
         this.rollButton    = document.getElementById(rollButtonId);
         this.gameOverPopUp = document.getElementById(gameOverId);
@@ -14,11 +13,8 @@ class DiceGame
         this.restartButton = document.getElementById(restartButtonId);
         this.restartPopUp  = document.getElementById(restartButtonId + `PopUp`);
         this.restartMask   = document.getElementById(restartButtonId + `Mask`);
-        this.restartYes    = document.getElementById(restartButtonId + `Yes`);
-
-        this.rollButton.onclick    = this.play.bind(this);
-        this.restartButton.onclick = this.restart.bind(this);
-        this.restartYes.onclick    = this.reset.bind(this);
+        this.restartManual = document.getElementById(restartButtonId + `Manual`);
+        this.restartAuto   = document.getElementById(restartButtonId + `Auto`);        
     }
 
     play()
@@ -39,8 +35,7 @@ class DiceGame
         this.rollButton.disabled = true;
         this.gameOverText.innerHTML = `<h2>${this.player.makeGameOverText(this.cpu)}</h2>`;
         this.gameOverText.innerHTML += `<h2>Final score: ${this.player.total} : ${this.cpu.total}</h2>`
-        this.gameOverPopUp.classList.remove(`hidden`);
-        this.gameOverMask.classList.remove(`hidden`);
+        this.toggleGameOverPopUp();
     }
 
     reset()
@@ -51,13 +46,31 @@ class DiceGame
         this.cpu.discardPackage();
         this.restartButton.disabled = true;
         this.rollButton.disabled = false;
-        this.restartPopUp.classList.add(`hidden`);
-        this.restartMask.classList.add(`hidden`);
     }
 
-    restart()
+    resetAuto()
     {
-        this.restartPopUp.classList.remove(`hidden`);
-        this.restartMask.classList.remove(`hidden`);
+        this.reset();
+        this.toggleGameOverPopUp();        
+    }
+
+    resetManual()
+    {
+        this.reset();
+        this.toggleRestartPopUp();
+    }
+
+    toggleRestartPopUp()
+    {
+        this.restartPopUp.classList.toggle(`hidden`);
+        this.restartMask.classList.toggle(`hidden`);
+    }
+
+    toggleGameOverPopUp()
+    {
+        this.gameOverMask.classList.toggle(`hidden`);
+        this.gameOverPopUp.classList.toggle(`hidden`);
     }
 }
+
+const game = new DiceGame(`player`, `cpu`, `roundDisplay`, `roll`, `gameOver`, `restart`);

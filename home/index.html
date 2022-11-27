@@ -10,9 +10,8 @@
         <link rel="stylesheet" href="../css/style.css">
 
         <script src="https://kit.fontawesome.com/6e7b26ffc8.js" crossorigin="anonymous"></script>
-        <script src="../js/dice.js" defer></script>
-        <script src="../js/game.js" defer></script>
-        <script src="../js/main.js" defer></script>
+        <script src="../js/DicePlayer.js" defer></script>
+        <script src="../js/DiceGame.js" defer></script>
     </head>
 
     <body>
@@ -59,25 +58,26 @@
                 <div id="gameOverMask" class="mask hidden"></div>
                 <div id="gameOver" class="popUp hidden">
                     <div id="gameOverText"></div>
-                    <button class="closeButton" onclick="closeGameOverPopUp()"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="closeButton" onclick="game.toggleGameOverPopUp()"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="restartAuto" onclick="game.resetAuto()">Play Again</button>
                 </div>
                 
                 <div id="restartMask" class="mask hidden"></div>
                 <div id="restartPopUp" class="popUp hidden">
-                    <h2>Are you sure you want to start a new game?</h2>
+                    <h2>Would you like to start a new game?</h2>
 
                     <div class="confirmationButtons">
-                        <button id="restartYes">Yes</button>
-                        <button onclick="closeRestartPopUp()">No</button>
+                        <button id="restartManual" onclick="game.resetManual()">Yes</button>
+                        <button onclick="game.toggleRestartPopUp()">No</button>
                     </div>
                     
-                    <button class="closeButton" onclick="closeRestartPopUp()"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="closeButton" onclick="game.toggleRestartPopUp()"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
 
             <div class="playButtons">
-                <button id="roll">Roll</button>
-                <button id="restart" disabled>Restart</button>
+                <button id="roll" onclick="game.play()">Roll</button>
+                <button id="restart" onclick="game.toggleRestartPopUp()" disabled>Restart</button>
             </div>
         </main>
 
