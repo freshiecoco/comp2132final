@@ -45,25 +45,21 @@ class DicePlayer
     {
         if (this.total > cpu.total)
         {
-            return `You win!`;
-        }
-        else if (this.total < cpu.total)
-        {
-            return `You lose!`;
+            return `Congratulations!<br>You are victorious!`;
         }
         else
         {
-            return `Draw!`;
+            return `You failed to<br>achieve victory!`;
         }
     }
 
-    generatePackage()
+    generatePackage(pronoun = `You`, determiner = `Your`)
     {
         this.roll();
         this.dice1Id.innerHTML  = img(d[this.d1], imgL);
         this.dice2Id.innerHTML  = img(d[this.d2], imgL);
-        this.scoreRId.innerHTML = `<p>You scored ${this.score}</p>`;
-        this.scoreTId.innerHTML = `<p>Your total score: ${this.total}`;
+        this.scoreRId.innerHTML = `<p>${pronoun} scored ${this.score}</p>`;
+        this.scoreTId.innerHTML = `<p>${determiner} total score: ${this.total}`;
         this.memoryId.innerHTML += `<div>${img(d[this.d1])}${img(d[this.d2])}<div>`;
     }
 

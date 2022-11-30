@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <title>Dice Game</title>
@@ -18,6 +17,7 @@
         <header></header>
 
         <main>
+            <h1>BACKWATER CASINO</h1>
             <div id="diceGame" class="gameContainer">
                 <div id="roundDisplay">Round:</div>
 
@@ -57,21 +57,20 @@
 
                 <div id="gameOverMask" class="mask hidden"></div>
                 <div id="gameOver" class="popUp hidden">
-                    <div id="gameOverText"></div>
-                    <button class="closeButton" onclick="game.toggleGameOverPopUp()"><i class="fa-solid fa-xmark"></i></button>
-                    <button id="restartAuto" onclick="game.resetAuto()">Play Again</button>
+                    <h3 id="gameOverText"></h3>
+                    <div>
+                        <div><button id="restartAuto" onclick="game.resetAuto()">Play Again</button></div>
+                        <div><button onclick="game.toggleGameOverPopUp()">Close Window</button></div>
+                    </div>
                 </div>
                 
                 <div id="restartMask" class="mask hidden"></div>
                 <div id="restartPopUp" class="popUp hidden">
-                    <h2>Would you like to start a new game?</h2>
-
-                    <div class="confirmationButtons">
-                        <button id="restartManual" onclick="game.resetManual()">Yes</button>
-                        <button onclick="game.toggleRestartPopUp()">No</button>
+                    <h3>Would you like to start a new game?</h3>
+                    <div>
+                        <div><button id="restartManual" onclick="game.resetManual()">YES</button></div>
+                        <div><button onclick="game.toggleRestartPopUp()">NO</button></div>
                     </div>
-                    
-                    <button class="closeButton" onclick="game.toggleRestartPopUp()"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
 

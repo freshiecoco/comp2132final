@@ -1,3 +1,8 @@
+const winSound  = new Audio(`../audios/youwin.wav`);
+const loseSound = new Audio(`../audios/youlose.wav`);
+winSound.volume = 0.3;
+loseSound.volume = 0.3;
+
 class DiceGame
 {
     constructor(playerId, cpuId, roundId, rollButtonId, gameOverId, restartButtonId)
@@ -22,8 +27,7 @@ class DiceGame
         this.restartButton.disabled = false;
         this.roundDisplay.innerHTML = `Round: ` + (++this.roundNum);
         this.player.generatePackage();
-        this.cpu.generatePackage();
-
+        this.cpu.generatePackage(`CPU`, `CPU's`);
         if (this.roundNum > 2)
         {
             this.gameOver();
@@ -33,8 +37,16 @@ class DiceGame
     gameOver()
     {
         this.rollButton.disabled = true;
-        this.gameOverText.innerHTML = `<h2>${this.player.makeGameOverText(this.cpu)}</h2>`;
-        this.gameOverText.innerHTML += `<h2>Final score: ${this.player.total} : ${this.cpu.total}</h2>`
+        this.gameOverText.innerHTML = this.player.makeGameOverText(this.cpu);
+        if (this.player.total > this.cpu.total)
+        {
+            winSound.play();
+        }
+        else
+        {
+            loseSound.play();
+        }
+
         this.toggleGameOverPopUp();
     }
 
