@@ -1,7 +1,5 @@
 const d = [`dice1`, `dice2`, `dice3`, `dice4`, `dice5`, `dice6`];
-
 const imgRoot = `../images/`;
-
 const imgS = `diceImgS`;
 const imgL = `diceImgL`;
 

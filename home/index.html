@@ -7,17 +7,18 @@
         <meta charset="UTF-8">
         
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="icon" href="../images/dice5.png">
 
-        <script src="https://kit.fontawesome.com/6e7b26ffc8.js" crossorigin="anonymous"></script>
         <script src="../js/DicePlayer.js" defer></script>
         <script src="../js/DiceGame.js" defer></script>
     </head>
 
     <body>
-        <header></header>
+        <header>
+            <h1>BACKWATER CASINO</h1>
+        </header>
 
         <main>
-            <h1>BACKWATER CASINO</h1>
             <div id="diceGame" class="gameContainer">
                 <div id="roundDisplay">Round:</div>
 
@@ -55,7 +56,7 @@
                     </div>
                 </div>
 
-                <div id="gameOverMask" class="mask hidden"></div>
+                <div id="mask" class="mask hidden"></div>
                 <div id="gameOver" class="popUp hidden">
                     <h3 id="gameOverText"></h3>
                     <div>
@@ -64,9 +65,8 @@
                     </div>
                 </div>
                 
-                <div id="restartMask" class="mask hidden"></div>
                 <div id="restartPopUp" class="popUp hidden">
-                    <h3>Would you like to start a new game?</h3>
+                    <h3>Would you like to<br>start a new game?</h3>
                     <div>
                         <div><button id="restartManual" onclick="game.resetManual()">YES</button></div>
                         <div><button onclick="game.toggleRestartPopUp()">NO</button></div>
