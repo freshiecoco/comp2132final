@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
 html {
     box-sizing: border-box;
@@ -15,6 +17,11 @@ body {
     margin: auto;
     background: rgb(49, 49, 49);
     color: whitesmoke;
+
+    .imgS {                            
+        width: 17px;
+        height: 17px;                            
+    }
 
     h1 {
         margin: 0px 0px 10px 0px;
@@ -60,8 +67,8 @@ body {
     }
 
     .gameContainer {
-        width: 600px;
-        height: 450px;
+        max-width: 600px;
+        max-height: 450px;
         margin: auto;
         border: 1px white solid;
         border-radius: 5px;
@@ -69,8 +76,17 @@ body {
         flex-direction: column;
         position: relative;
 
-        h2, p {
+        #roundDisplay, a {
+            line-height: 45px;
+        }
+
+        h2, p, #roundDisplay, a {
             margin-left: 10px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h2 {
+            text-align: center;
         }
 
         .subGameContainer {
@@ -136,7 +152,6 @@ body {
                 margin-bottom: 10px;
             
                 > div {
-                    display: inline;
                     margin: 0px 3px;
                     border: 2px solid rgb(7, 36, 126);
                     padding: 1px;
@@ -159,22 +174,96 @@ body {
         }
 
         .hidden {
-            visibility: hidden;
+            display: none;
         }
 
+        #ruleContainer {
+            position: relative;
+            display: flex;
+            place-content: center;
+
+            #ruleTip {
+                text-decoration: underline;
+                user-select: none;
+
+                &:hover {
+                    cursor: pointer;
+                    color: lightblue;
+                }
+            }
+
+            #rule {
+                font-family: 'Rubik', sans-serif;
+                font-weight: 300;
+                font-size: 14px;
+                color: rgba(241, 241, 241, 0.9);
+                position: absolute;
+                background: rgba(15, 25, 65, 0.92);
+                bottom: 50px;
+                padding: 8px;
+                border-radius: 2px;
+                animation: fadeIn 1s;
+            }
+
+            #rule:before {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -8px;
+                border: 8px solid transparent;
+                border-top: 8px solid rgba(15, 25, 65, 0.92);
+                
+            }
+
+            @keyframes fadeIn {
+                from {
+                  opacity: 0;
+                }
+                to {
+                  opacity: 1;
+                }
+            }
+        }
     }
 
     .playButtons {
         margin: auto;
-        width: 300px;
+        margin-top: 20px;
+        width: 400px;
         display: flex;
 
-        > button {
+        > div {
             flex: 1;
-            margin: 0px 30px;
-            font-size: 16px;
-            font-weight: bold;
+            width: 170px;
+            padding-top: 1px;
+
+            > button {
+                font-family: 'Orbitron', sans-serif;
+                color: rgb(75, 182, 40);
+                display: block;
+                margin: auto;
+                width: inherit;
+                height: 30px;
+                font-size: 16px;
+                font-weight: bold;
+                background-color: rgba(44, 44, 44, 0.5);
+                border: 2px solid red;
+                border-radius: 2px;
+                cursor: pointer;
+
+                &:disabled {
+                    color: gray;
+                    cursor:not-allowed;
+                }
+            }
         }
+        > :nth-child(2)
+        {
+            flex: 0.2;
+            border: none;
+        }
+        
     }
 
     .mask {
@@ -187,3 +276,4 @@ body {
         top: 0;
     }
 }
+

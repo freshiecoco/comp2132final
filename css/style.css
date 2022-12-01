@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
 html {
   box-sizing: border-box;
   background-color: rgb(63, 63, 63);
@@ -14,6 +16,10 @@ body {
   margin: auto;
   background: rgb(49, 49, 49);
   color: whitesmoke;
+}
+body .imgS {
+  width: 17px;
+  height: 17px;
 }
 body h1 {
   margin: 0px 0px 10px 0px;
@@ -48,8 +54,8 @@ body img {
   -ms-user-select: none;
 }
 body .gameContainer {
-  width: 600px;
-  height: 450px;
+  max-width: 600px;
+  max-height: 450px;
   margin: auto;
   border: 1px white solid;
   border-radius: 5px;
@@ -57,8 +63,15 @@ body .gameContainer {
   flex-direction: column;
   position: relative;
 }
-body .gameContainer h2, body .gameContainer p {
+body .gameContainer #roundDisplay, body .gameContainer a {
+  line-height: 45px;
+}
+body .gameContainer h2, body .gameContainer p, body .gameContainer #roundDisplay, body .gameContainer a {
   margin-left: 10px;
+  font-family: "Open Sans", sans-serif;
+}
+body .gameContainer h2 {
+  text-align: center;
 }
 body .gameContainer .subGameContainer {
   height: 350px;
@@ -114,7 +127,6 @@ body .gameContainer .popUp > div {
   margin-bottom: 10px;
 }
 body .gameContainer .popUp > div > div {
-  display: inline;
   margin: 0px 3px;
   border: 2px solid rgb(7, 36, 126);
   padding: 1px;
@@ -132,18 +144,94 @@ body .gameContainer .popUp > div > div > button:hover {
   cursor: pointer;
 }
 body .gameContainer .hidden {
-  visibility: hidden;
+  display: none;
+}
+body .gameContainer #ruleContainer {
+  position: relative;
+  display: flex;
+  place-content: center;
+}
+body .gameContainer #ruleContainer #ruleTip {
+  text-decoration: underline;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body .gameContainer #ruleContainer #ruleTip:hover {
+  cursor: pointer;
+  color: lightblue;
+}
+body .gameContainer #ruleContainer #rule {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: rgba(241, 241, 241, 0.9);
+  position: absolute;
+  background: rgba(15, 25, 65, 0.92);
+  bottom: 50px;
+  padding: 8px;
+  border-radius: 2px;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+}
+body .gameContainer #ruleContainer #rule:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid rgba(15, 25, 65, 0.92);
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 body .playButtons {
   margin: auto;
-  width: 300px;
+  margin-top: 20px;
+  width: 400px;
   display: flex;
 }
-body .playButtons > button {
+body .playButtons > div {
   flex: 1;
-  margin: 0px 30px;
+  width: 170px;
+  padding-top: 1px;
+}
+body .playButtons > div > button {
+  font-family: "Orbitron", sans-serif;
+  color: rgb(75, 182, 40);
+  display: block;
+  margin: auto;
+  width: inherit;
+  height: 30px;
   font-size: 16px;
   font-weight: bold;
+  background-color: rgba(44, 44, 44, 0.5);
+  border: 2px solid red;
+  border-radius: 2px;
+  cursor: pointer;
+}
+body .playButtons > div > button:disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+body .playButtons > :nth-child(2) {
+  flex: 0.2;
+  border: none;
 }
 body .mask {
   background-color: black;

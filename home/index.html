@@ -54,6 +54,20 @@
 
                         <div id="cpuMemory" class="memoryContainer"></div>
                     </div>
+
+                    
+                </div>
+                <div id="ruleContainer">
+                    <p id="ruleTip">How to play</p>
+                    <div id="rule">
+                        <p>Rules:</p>
+                        <p>Roll 2 dice three times <br>against your opponent.<br>
+                        You score 0 if either dice <br>rolled an <img src="../images/dice1.png" alt="dice1" class="imgS" title="1">,<br>
+                        2X the sum if both the same,<br>
+                        and 1X the sum otherwise.
+                        </p>
+                        <p>Good luck!</p>
+                    </div>
                 </div>
 
                 <div id="mask" class="mask hidden"></div>
@@ -75,8 +89,9 @@
             </div>
 
             <div class="playButtons">
-                <button id="roll" onclick="game.play()">Roll</button>
-                <button id="restart" onclick="game.toggleRestartPopUp()" disabled>Restart</button>
+                <div><button id="roll" onclick="game.play()">Roll</button></div>
+                <div></div>
+                <div><button id="restart" onclick="game.toggleRestartPopUp()" disabled>Restart</button></div>
             </div>
         </main>
 

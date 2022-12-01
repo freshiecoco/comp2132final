@@ -82,3 +82,10 @@ class DiceGame
 }
 
 const game = new DiceGame(`player`, `cpu`, `roundDisplay`, `roll`, `gameOver`, `restart`);
+
+const target = document.getElementById("ruleTip");
+const tooltip = document.getElementById("rule");
+
+target.addEventListener('click', () => 
+    {tooltip.classList.toggle(`hidden`)
+});
